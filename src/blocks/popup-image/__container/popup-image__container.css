@@ -1,0 +1,7 @@
+.popup-image__container {
+  position: relative;
+  display: inline-block;
+  top: 15%;
+  text-align: start;
+  max-width: 816px;
+}
