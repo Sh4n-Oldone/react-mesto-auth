@@ -1,11 +1,11 @@
 {
-  "name": "mesto-react",
+  "name": "mesto-react-auth",
   "version": "0.1.0",
   "description": "JS-learning, Yandex-Praktikum",
   "author": "Aleksandr Pavlov",
   "repository": {
     "type": "git",
-    "url": "git+https://Sh4n-Oldone.github.io/mesto-react.git"
+    "url": "git+https://Sh4n-Oldone.github.io/mesto-react-auth.git"
   },
   "private": true,
   "dependencies": {

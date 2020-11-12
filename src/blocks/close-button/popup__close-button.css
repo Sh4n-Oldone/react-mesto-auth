@@ -17,7 +17,7 @@
 @media screen and (max-width: 545px) {
   .popup__close-button {
     right: 50%;
-    top: -40px;
+    top: -60px;
     transform: translate(50%, 0);
   }
 }
