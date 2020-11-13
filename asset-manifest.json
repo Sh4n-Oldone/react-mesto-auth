@@ -1,26 +1,26 @@
 {
   "files": {
-    "main.css": "/static/css/main.4b146373.chunk.css",
-    "main.js": "/static/js/main.8eed8122.chunk.js",
-    "main.js.map": "/static/js/main.8eed8122.chunk.js.map",
-    "runtime-main.js": "/static/js/runtime-main.66700e0a.js",
-    "runtime-main.js.map": "/static/js/runtime-main.66700e0a.js.map",
-    "static/js/2.5ba15ec1.chunk.js": "/static/js/2.5ba15ec1.chunk.js",
-    "static/js/2.5ba15ec1.chunk.js.map": "/static/js/2.5ba15ec1.chunk.js.map",
-    "index.html": "/index.html",
-    "precache-manifest.6cc1646f1af929d3af6fceb9cf737d63.js": "/precache-manifest.6cc1646f1af929d3af6fceb9cf737d63.js",
-    "service-worker.js": "/service-worker.js",
-    "static/css/main.4b146373.chunk.css.map": "/static/css/main.4b146373.chunk.css.map",
-    "static/js/2.5ba15ec1.chunk.js.LICENSE.txt": "/static/js/2.5ba15ec1.chunk.js.LICENSE.txt",
-    "static/media/index.css": "/static/media/remove-button.4220563a.svg",
-    "static/media/cousteau.jpg": "/static/media/cousteau.f3e9a11e.jpg",
-    "static/media/edit-profile-icon.svg": "/static/media/edit-profile-icon.d476a8b8.svg",
-    "static/media/logo_white.svg": "/static/media/logo_white.94cbab21.svg"
+    "main.css": "/mesto-react-auth/static/css/main.1f911185.chunk.css",
+    "main.js": "/mesto-react-auth/static/js/main.be6d7fd0.chunk.js",
+    "main.js.map": "/mesto-react-auth/static/js/main.be6d7fd0.chunk.js.map",
+    "runtime-main.js": "/mesto-react-auth/static/js/runtime-main.f61e6dfb.js",
+    "runtime-main.js.map": "/mesto-react-auth/static/js/runtime-main.f61e6dfb.js.map",
+    "static/js/2.5ba15ec1.chunk.js": "/mesto-react-auth/static/js/2.5ba15ec1.chunk.js",
+    "static/js/2.5ba15ec1.chunk.js.map": "/mesto-react-auth/static/js/2.5ba15ec1.chunk.js.map",
+    "index.html": "/mesto-react-auth/index.html",
+    "precache-manifest.0764e8075e2a6a6fd42f74c23d72606b.js": "/mesto-react-auth/precache-manifest.0764e8075e2a6a6fd42f74c23d72606b.js",
+    "service-worker.js": "/mesto-react-auth/service-worker.js",
+    "static/css/main.1f911185.chunk.css.map": "/mesto-react-auth/static/css/main.1f911185.chunk.css.map",
+    "static/js/2.5ba15ec1.chunk.js.LICENSE.txt": "/mesto-react-auth/static/js/2.5ba15ec1.chunk.js.LICENSE.txt",
+    "static/media/index.css": "/mesto-react-auth/static/media/remove-button.4220563a.svg",
+    "static/media/cousteau.jpg": "/mesto-react-auth/static/media/cousteau.f3e9a11e.jpg",
+    "static/media/edit-profile-icon.svg": "/mesto-react-auth/static/media/edit-profile-icon.d476a8b8.svg",
+    "static/media/logo_white.svg": "/mesto-react-auth/static/media/logo_white.94cbab21.svg"
   },
   "entrypoints": [
-    "static/js/runtime-main.66700e0a.js",
+    "static/js/runtime-main.f61e6dfb.js",
     "static/js/2.5ba15ec1.chunk.js",
-    "static/css/main.4b146373.chunk.css",
-    "static/js/main.8eed8122.chunk.js"
+    "static/css/main.1f911185.chunk.css",
+    "static/js/main.be6d7fd0.chunk.js"
   ]
 }
