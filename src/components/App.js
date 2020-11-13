@@ -240,7 +240,6 @@ export default function App() {
 
                   <Route path='/sign-up'>
                     <Register
-                      // onRegister={handleInfoTooltipOpen}
                       registerFetchOnSubmit={apiRegister}
                     />
                   </Route>

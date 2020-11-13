@@ -23,7 +23,6 @@ export default function Register({registerFetchOnSubmit}) {
     }
     if (email && password){
       return registerFetchOnSubmit(password, email);
-      // onRegister();
     }
   }
 
