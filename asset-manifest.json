@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/react-mesto-auth/static/css/main.0814b0f0.chunk.css",
-    "main.js": "/react-mesto-auth/static/js/main.69b028c3.chunk.js",
-    "main.js.map": "/react-mesto-auth/static/js/main.69b028c3.chunk.js.map",
+    "main.js": "/react-mesto-auth/static/js/main.fbbdfb4d.chunk.js",
+    "main.js.map": "/react-mesto-auth/static/js/main.fbbdfb4d.chunk.js.map",
     "runtime-main.js": "/react-mesto-auth/static/js/runtime-main.1482b755.js",
     "runtime-main.js.map": "/react-mesto-auth/static/js/runtime-main.1482b755.js.map",
     "static/js/2.5ba15ec1.chunk.js": "/react-mesto-auth/static/js/2.5ba15ec1.chunk.js",
     "static/js/2.5ba15ec1.chunk.js.map": "/react-mesto-auth/static/js/2.5ba15ec1.chunk.js.map",
     "index.html": "/react-mesto-auth/index.html",
-    "precache-manifest.02fd511e1a7e854dd1c6200ac112a7b3.js": "/react-mesto-auth/precache-manifest.02fd511e1a7e854dd1c6200ac112a7b3.js",
+    "precache-manifest.e82238e5658e7eaedd8308d077efe34c.js": "/react-mesto-auth/precache-manifest.e82238e5658e7eaedd8308d077efe34c.js",
     "service-worker.js": "/react-mesto-auth/service-worker.js",
     "static/css/main.0814b0f0.chunk.css.map": "/react-mesto-auth/static/css/main.0814b0f0.chunk.css.map",
     "static/js/2.5ba15ec1.chunk.js.LICENSE.txt": "/react-mesto-auth/static/js/2.5ba15ec1.chunk.js.LICENSE.txt",
@@ -21,6 +21,6 @@
     "static/js/runtime-main.1482b755.js",
     "static/js/2.5ba15ec1.chunk.js",
     "static/css/main.0814b0f0.chunk.css",
-    "static/js/main.69b028c3.chunk.js"
+    "static/js/main.fbbdfb4d.chunk.js"
   ]
 }
