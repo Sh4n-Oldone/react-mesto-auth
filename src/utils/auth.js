@@ -17,13 +17,11 @@ export const register = (password, email) => {
     if (res.status === 400) {
       console.log('Некорректно заполнено одно из полей при регистрации')
     }
-    if (res.status !== 200 && res.status !== 201) {
+    if (res.status !== 200 || res.status !== 201) {
       console.log(res.status);
-    } else {
       return res.json();
     }
   })
-  .catch(err => console.log(err))
 };
 
 export const authorize = (email, password) => {
@@ -42,11 +40,9 @@ export const authorize = (email, password) => {
       console.log('Не передано одно из полей для проверки пользователя');
     }
     if (res.status === 401) {
-      console.log('Пользоватль с таким email не найден');
+      console.log('Пользователь с таким email не найден');
     }
-    if (res.status !== 200 && res.status !== 201) {
-      console.log(res.status);
-    } else {
+    if (res.status !== 200 || res.status !== 201) {
       return res.json();
     }
   })
@@ -58,7 +54,6 @@ export const authorize = (email, password) => {
       return;
     }
   })
-  .catch(err => console.log(err))
 };
 
 export const getContent = (token) => {
@@ -78,5 +73,4 @@ export const getContent = (token) => {
   .then((data) => {
       return data;
   })
-  .catch(err => console.log(err))
 }

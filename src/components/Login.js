@@ -1,9 +1,6 @@
 import React, { useState } from 'react';
-import { useHistory } from 'react-router-dom';
-import * as auth from '../utils/auth.js';
 
 export default function Login({handleLogin}) {
-  const history = useHistory();
   const [state, setState] = useState({
     email: '',
     password: '',
@@ -23,22 +20,9 @@ export default function Login({handleLogin}) {
     if (!email || !password){
       return;
     }
-
-    auth.authorize(email, password)
-    .then((data) => {
-      
-      if (!data){
-        setState({message: 'Что-то пошло не так!'})
-      }
-
-      setState({ email: '', password: '', message: '' });
-      handleLogin(state);
-      history.push('/');
-
-    })
-    .catch(err => console.log(err));
+    handleLogin(email, password, state)
+    setState({ email: '', password: '', message: '' });
   }
-
 
   return (
     <>

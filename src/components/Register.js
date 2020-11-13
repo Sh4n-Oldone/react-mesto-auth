@@ -1,13 +1,11 @@
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
-import * as auth from '../utils/auth.js';
 
-export default function Register({isError, onReg}) {
+export default function Register({registerFetchOnSubmit, onReg}) {
   const history = useHistory();
   const [state, setState] = useState({
     email: '',
-    password: '',
-    message: ''
+    password: ''
   });
   const handleChange = (e) => {
     const { name,  value } = e.target;
@@ -23,21 +21,8 @@ export default function Register({isError, onReg}) {
     if (!email || !password){
       return;
     }
-    auth.register(password, email)
-      .then((data) => {
-      
-        if (!data){
-          setState({message: 'Что-то пошло не так!'});
-          isError(true)
-        }
-
-        setState({ email: '', password: '', message: '' });
-        history.push('/sign-in');
-        isError(false);
-      })
-      .catch(err => console.log(err));
-
-      onReg();
+    registerFetchOnSubmit(password, email);
+    onReg();
   }
 
 

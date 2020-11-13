@@ -20,7 +20,6 @@ import { getToken } from '../utils/token';
 import InfoTooltip from './InfoTooltip.js';
 
 export default function App() {
-
   const [popupsState, popupsSetState] = useState({
     isEditProfilePopupOpen: false,
     isAddPlacePopupOpen: false,
@@ -40,7 +39,11 @@ export default function App() {
   const [userData, setUserData] = useState({email: ''});
   const history = useHistory();
   const [registrationErrorStatus, setRegistrationErrorStatus] = useState(false);
-  
+
+  useEffect(() => {
+    tokenCheck();
+  }, []);
+
   useEffect(() => {
     Promise.all([
       myApi.getUserData(),
@@ -58,7 +61,7 @@ export default function App() {
       })
       .catch((error) => {
         console.log('Я получал данные о профиле и карточках. Я сломался. Ошибка: ' + error)
-      })
+      });
   }, []);
 
   function handleCardLike(card) {
@@ -94,10 +97,10 @@ export default function App() {
           _id: res._id
         })
       })
+      .then(() => {closeAllPopups()})
       .catch((error) => {
         console.log('Я менял данные пользователя. Я сломался. Ошибка: ' + error)
-      })
-      .then(() => {closeAllPopups()});
+      });
   }
 
   function handleUpdateAvatar(data) {
@@ -110,10 +113,10 @@ export default function App() {
           _id: currentUser._id
         })
       })
+      .then(() => {closeAllPopups()})
       .catch((error) => {
         console.log('Я отправлял новый аватар. Я сломался. Ошибка: ' + error)
-      })
-      .then(() => {closeAllPopups()});
+      });
   }
 
   function handleAddPlaceSubmit(data) {
@@ -121,10 +124,10 @@ export default function App() {
       .then((newCard) => {
         setCards([newCard, ...cards]);
       })
+      .then(() => {closeAllPopups()})
       .catch((error) => {
         console.log('Я добавлял новую карточку. Я сломался. Ошибка: ' + error)
-      })
-      .then(() => {closeAllPopups()});
+      });
   }
 
   function handleCardClick(card) {
@@ -147,6 +150,10 @@ export default function App() {
     popupsSetState({...popupsState, isRemoveCardPopupOpen: !popupsState.isRemoveCardPopupOpen})
   }
 
+  function handleInfoTooltipOpen() {
+    popupsSetState({...popupsState, isInfoTooltipOpen: !popupsState.isInfoTooltipOpen})
+  }
+
   function closeAllPopups() {
     popupsSetState({
       ...popupsState, isEditProfilePopupOpen: false,
@@ -163,31 +170,50 @@ export default function App() {
     setLoggedIn(true);
   }
 
-  function tokenCheck() {
+  function tokenCheck () {
     const jwt = getToken();
 
     if (!jwt) {
       return;
     };
 
-    auth.getContent(jwt)
-      .then((res) => {
-        setLoggedIn(true);
-        setUserData({email: res.data.email});
-        history.push('/');
-      });
+    if (jwt) {
+      return auth.getContent(jwt)
+              .then((res) => {
+                setLoggedIn(true);
+                setUserData({email: res.data.email});
+                history.push('/');
+              });
+    }
   }
 
-  useEffect(() => {
-    tokenCheck();
-  }, []);
-
-  function handleInfoTooltipOpen() {
-    popupsSetState({...popupsState, isInfoTooltipOpen: !popupsState.isInfoTooltipOpen})
+  function apiRegister(password, email) {
+    auth.register(password, email)
+      .then((data) => {
+        if (!data){
+          setRegistrationErrorStatus(true);
+        } else {
+          history.push('/sign-in');
+          setRegistrationErrorStatus(false);
+        }
+      })
+      .catch(err => console.log(err))
   }
 
-  function handleRegistrationError(isError) {
-    setRegistrationErrorStatus(isError);
+  function apiLoginCheck (email, password, userData) {
+    auth.authorize(email, password)
+      .then((data) => {
+        if (!data){
+          setRegistrationErrorStatus(true);
+          handleInfoTooltipOpen();
+          tokenCheck();
+        } else {
+          handleLogin(userData);
+          setRegistrationErrorStatus(false);
+          history.push('/');
+        }
+      })
+      .catch(err => console.log(err))
   }
 
   return (
@@ -222,29 +248,16 @@ export default function App() {
                   }
                 />
 
-                {/* <Route exact path='/'>
-                  <Main
-                    onEditProfile={handleEditProfileClick}
-                    onAddPlace={handleAddPlaceClick}
-                    onEditAvatar={handleEditAvatarClick}
-                    onCardClick={handleCardClick}
-                    onRemoveClickPopup={handleRemoveCardClickPopupOpen}
-                    onLikeClick={handleCardLike}
-                    onDeleteClick={handleCardDelete}
-                  />
-                  <Footer/>
-                </Route> */}
-
                 <Route path='/sign-up'>
                   <Register
-                    isError={handleRegistrationError}
                     onReg={handleInfoTooltipOpen}
+                    registerFetchOnSubmit={apiRegister}
                   />
                 </Route>
                 
                 <Route path='/sign-in'>
                   <Login
-                    handleLogin={handleLogin}
+                    handleLogin={apiLoginCheck}
                   />
                 </Route>
 
