@@ -8,11 +8,11 @@
     "url": "git+https://Sh4n-Oldone.github.io/mesto-react-auth.git"
   },
   "private": true,
+  "homepage": "https://Sh4n-Oldone.github.io/mesto-react-auth/",
   "dependencies": {
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.3.2",
     "@testing-library/user-event": "^7.1.2",
-    "gh-pages": "^3.1.0",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-router-dom": "^5.2.0",
@@ -40,5 +40,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "gh-pages": "^3.1.0"
   }
 }
