@@ -158,6 +158,10 @@ export default function App() {
     setSelectedCard('')
   }
 
+  function handleExit() {
+    setLoggedIn({loggedIn: !loggedIn});
+  }
+
   function handleLogin(userData) {
     setUserData(userData);
     setLoggedIn(true);
@@ -223,7 +227,7 @@ export default function App() {
 
           <CurrentUserContext.Provider value={currentUser}>
             <CardsContext.Provider value={cards}>
-              <Header user={userData}/>
+              <Header user={userData} onExit={handleExit}/>
                 <Switch>
 
                   <ProtectedRoute exact path='/'
@@ -256,9 +260,7 @@ export default function App() {
 
                 </Switch>
 
-              <Footer
-                isOpen={loggedIn}
-              />
+              <Footer isOpen={loggedIn}/>
 
               <EditProfilePopup
                   isOpen={popupsState.isEditProfilePopupOpen}

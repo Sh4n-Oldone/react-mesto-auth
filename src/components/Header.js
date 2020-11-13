@@ -4,12 +4,15 @@ import { Route, Switch, useHistory } from 'react-router-dom';
 import logo from '../images/logo_white.svg';
 import { removeToken } from '../utils/token';
 
-export default function Header({user}) {
+export default function Header({user, onExit}) {
   const history = useHistory();
 
   // const isSmallScreen = useMediaQuery({ query: (max-width: 760px) });
   // Конечно, мы же не можем использовать удобные штуки -_-
-
+  function exitClick() {
+    history.push('./sign-in');
+    onExit();
+  }
 
   return (
     <>
@@ -40,7 +43,7 @@ export default function Header({user}) {
             <button 
               type='button' 
               className='button-style__reset header__button header__button_sign-up'
-              onClick={() => {history.push('./sign-in')}}
+              onClick={exitClick}
             >Войти</button>
           </Route>
         </Switch>
