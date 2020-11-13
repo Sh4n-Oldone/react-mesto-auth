@@ -129,31 +129,24 @@ export default function App() {
         console.log('Я добавлял новую карточку. Я сломался. Ошибка: ' + error)
       });
   }
-
   function handleCardClick(card) {
     setSelectedCard(card);
   }
-
   function handleEditProfileClick() {
     popupsSetState({...popupsState, isEditProfilePopupOpen: !popupsState.isEditProfilePopupOpen})
   }
-
   function handleAddPlaceClick() {
     popupsSetState({...popupsState, isAddPlacePopupOpen: !popupsState.isAddPlacePopupOpen})
   }
-
   function handleEditAvatarClick() {
     popupsSetState({...popupsState, isEditAvatarPopupOpen: !popupsState.isEditAvatarPopupOpen})
   }
-
   function handleRemoveCardClickPopupOpen() {
     popupsSetState({...popupsState, isRemoveCardPopupOpen: !popupsState.isRemoveCardPopupOpen})
   }
-
   function handleInfoTooltipOpen() {
     popupsSetState({...popupsState, isInfoTooltipOpen: !popupsState.isInfoTooltipOpen})
   }
-
   function closeAllPopups() {
     popupsSetState({
       ...popupsState, isEditProfilePopupOpen: false,
@@ -250,7 +243,7 @@ export default function App() {
 
                 <Route path='/sign-up'>
                   <Register
-                    onReg={handleInfoTooltipOpen}
+                    onRegister={handleInfoTooltipOpen}
                     registerFetchOnSubmit={apiRegister}
                   />
                 </Route>
@@ -264,7 +257,6 @@ export default function App() {
                 <Route>
                   {loggedIn ? <Redirect to="/" /> : <Redirect to="/sign-in" />}
                 </Route>
-
 
               </Switch>
 

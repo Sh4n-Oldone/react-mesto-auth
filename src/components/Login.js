@@ -13,14 +13,13 @@ export default function Login({handleLogin}) {
       [name]: value
     }));
   };
-
   const handleSubmit = (event) => {
     event.preventDefault();
     const { email, password } = state;
     if (!email || !password){
       return;
     }
-    handleLogin(email, password, state)
+    handleLogin(email, password, state);
     setState({ email: '', password: '', message: '' });
   }
 

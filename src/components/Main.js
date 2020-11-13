@@ -4,7 +4,14 @@ import Card from '../components/Card.js';
 import CurrentUserContext from "../context/CurrentUserContext";
 import CardsContext from "../context/CardsContext";
 
-export default function Main({onEditAvatar, onEditProfile, onAddPlace, onCardClick, onRemoveClickPopup, onLikeClick, onDeleteClick}) {
+export default function Main({
+  onEditAvatar, 
+  onEditProfile, 
+  onAddPlace, 
+  onCardClick, 
+  onRemoveClickPopup, 
+  onLikeClick, 
+  onDeleteClick}) {
 
   return (
 
