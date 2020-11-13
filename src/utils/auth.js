@@ -15,7 +15,9 @@ export const register = (password, email) => {
   })
   .then(res => {
     if (res.status === 400) {
-      console.log('Некорректно заполнено одно из полей при регистрации')
+      const error = {error: 'ошибка'};
+      console.log('Некорректно заполнено одно из полей при регистрации');
+      return error;
     }
     if (res.status !== 200 || res.status !== 201) {
       console.log(res.status);

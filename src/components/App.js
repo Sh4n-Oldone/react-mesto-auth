@@ -183,11 +183,18 @@ export default function App() {
   function apiRegister(password, email) {
     auth.register(password, email)
       .then((data) => {
+        if (data.error) {
+          setRegistrationErrorStatus(true);
+          handleInfoTooltipOpen();
+        }
         if (!data){
           setRegistrationErrorStatus(true);
-        } else {
+          handleInfoTooltipOpen();
+        }
+        if (data.data._id) {
           history.push('/sign-in');
           setRegistrationErrorStatus(false);
+          handleInfoTooltipOpen();
         }
       })
       .catch(err => console.log(err))
@@ -216,49 +223,43 @@ export default function App() {
 
           <CurrentUserContext.Provider value={currentUser}>
             <CardsContext.Provider value={cards}>
-            <Header user={userData}/>
-              <Switch>
+              <Header user={userData}/>
+                <Switch>
 
-                <ProtectedRoute exact path='/'
-                  loggedIn={loggedIn}
-                  component={
-                    () => {
-                      return (
-                        <>
-                          <Main
-                            onEditProfile={handleEditProfileClick}
-                            onAddPlace={handleAddPlaceClick}
-                            onEditAvatar={handleEditAvatarClick}
-                            onCardClick={handleCardClick}
-                            onRemoveClickPopup={handleRemoveCardClickPopupOpen}
-                            onLikeClick={handleCardLike}
-                            onDeleteClick={handleCardDelete}
-                          />
-                          <Footer/>
-                        </>
-                      )
-                    }
-                  }
-                />
-
-                <Route path='/sign-up'>
-                  <Register
-                    onRegister={handleInfoTooltipOpen}
-                    registerFetchOnSubmit={apiRegister}
+                  <ProtectedRoute exact path='/'
+                    loggedIn={loggedIn}
+                    component={Main}
+                    onEditProfile={handleEditProfileClick}
+                    onAddPlace={handleAddPlaceClick}
+                    onEditAvatar={handleEditAvatarClick}
+                    onCardClick={handleCardClick}
+                    onRemoveClickPopup={handleRemoveCardClickPopupOpen}
+                    onLikeClick={handleCardLike}
+                    onDeleteClick={handleCardDelete}
                   />
-                </Route>
-                
-                <Route path='/sign-in'>
-                  <Login
-                    handleLogin={apiLoginCheck}
-                  />
-                </Route>
 
-                <Route>
-                  {loggedIn ? <Redirect to="/" /> : <Redirect to="/sign-in" />}
-                </Route>
+                  <Route path='/sign-up'>
+                    <Register
+                      // onRegister={handleInfoTooltipOpen}
+                      registerFetchOnSubmit={apiRegister}
+                    />
+                  </Route>
+                  
+                  <Route path='/sign-in'>
+                    <Login
+                      handleLogin={apiLoginCheck}
+                    />
+                  </Route>
 
-              </Switch>
+                  <Route>
+                    {loggedIn ? <Redirect to="/" /> : <Redirect to="/sign-in" />}
+                  </Route>
+
+                </Switch>
+
+              <Footer
+                isOpen={loggedIn}
+              />
 
               <EditProfilePopup
                   isOpen={popupsState.isEditProfilePopupOpen}
@@ -287,13 +288,12 @@ export default function App() {
                   onClose={closeAllPopups}
                 >
               </ImagePopup>
-
               <InfoTooltip
                 isOpen={popupsState.isInfoTooltipOpen} 
                 onClose={closeAllPopups} 
                 isError={registrationErrorStatus}
               />
-
+              
             </CardsContext.Provider>
           </CurrentUserContext.Provider>
 

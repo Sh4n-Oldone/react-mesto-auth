@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 
-export default function Register({registerFetchOnSubmit, onRegister}) {
+export default function Register({registerFetchOnSubmit}) {
   const history = useHistory();
   const [state, setState] = useState({
     email: '',
@@ -21,8 +21,10 @@ export default function Register({registerFetchOnSubmit, onRegister}) {
     if (!email || !password){
       return;
     }
-    registerFetchOnSubmit(password, email);
-    onRegister();
+    if (email && password){
+      return registerFetchOnSubmit(password, email);
+      // onRegister();
+    }
   }
 
 
